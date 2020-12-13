@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit-Sort</title>
+</head>
+
+<body>
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <p>Enter space or enter seprated Name(s) of subreddits</p>
+            {{form.as_p}}
+            <input type="submit" value="Submit">
+            <br>
+            <p><textarea name="output" cols="40" rows="10">{{OUT}}</textarea></p>
+        </form>
+    </div>
+    <!-- <textarea id="inputBox" name="inputBox" rows="20" cols="50"
+        placeholder="Put subreddit names space/enter seprated"></textarea>
+    <button id="GO">Do it</button>
+    <textarea id="outputBox" name="inputBox" rows="20" cols="50" placeholder="output here"></textarea> -->
+</body>
+
+</html>
