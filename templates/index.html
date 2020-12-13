@@ -11,7 +11,7 @@
     <div class="container">
         <form method="POST">
             {% csrf_token %}
-            <p>Enter space or enter seprated Name(s) of subreddits</p>
+            <p>Enter space or enter seprated Names of subreddits(eg. learnpython PhilosophyMemes)</p>
             {{form.as_p}}
             <input type="submit" value="Submit">
             <br>

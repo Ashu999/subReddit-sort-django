@@ -8,15 +8,15 @@ from . import forms
 import praw
 from tabulate import tabulate
 
-reddit = praw.Reddit(client_id="oybZZHDdE1EnYQ",
-                     client_secret="eboZUU1BVG5Tpy1WAKiXDp7ECEVqjA",
+reddit = praw.Reddit(client_id="dEsY3shTum9pJA",
+                     client_secret="wuGKsxPDKeXzB0dw5ih3TISxrSUDrA",
                      user_agent="my user agent")
 
 
 def sub_exists(sub):
     exist = True
     try:
-        reddit.subreddits.search_by_name(sub, exact=True)
+        reddit.subreddit(sub).subreddit_type
     except:
         exist = False
     return exist
@@ -25,11 +25,11 @@ def sub_exists(sub):
 def redditSort(inpurStr):
     subreddit_list = set()
     for word in inpurStr.split():
-        print(word)
+        #print(word)
         if not (sub_exists(word)):
             continue
         subreddit_list.add(word)
-    print("sub list: ", subreddit_list)
+    #print("sub list: ", subreddit_list)
     subreddit_subs = []
     for x in subreddit_list:
         subr = reddit.subreddit(x)
@@ -48,7 +48,7 @@ def index(request):
         form = forms.FormInput(request.POST)
         if (form.is_valid()):
             inp = form.cleaned_data['Input']
-            print('Input: ' + inp)
+            #print('Input: ' + inp)
             out = redditSort(inp)
             return render(request, 'index.html', {"form": form, 'OUT': out})
     return render(request, 'index.html', {"form": form})

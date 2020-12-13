@@ -20,5 +20,5 @@ from reddit_sort_app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
 ]
