@@ -10,8 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
+#env
+import os
+from dotenv import load_dotenv
+project_folder = os.path.abspath('.')
+load_dotenv(os.path.join(project_folder, '.env'))
+DJANGO_KEY = os.getenv("DJANGO_KEY")
 
+from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR.joinpath('templates')
@@ -19,7 +25,7 @@ TEMPLATES_DIR = BASE_DIR.joinpath('templates')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f!b^rb2lefc%v2b!_hd-kua&@1d$(-h%7n^qc(1plo+y^p8i(s'
+SECRET_KEY = DJANGO_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False

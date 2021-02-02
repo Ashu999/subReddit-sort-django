@@ -8,9 +8,19 @@ from . import forms
 import praw
 from tabulate import tabulate
 
-reddit = praw.Reddit(client_id="dEsY3shTum9pJA",
-                     client_secret="wuGKsxPDKeXzB0dw5ih3TISxrSUDrA",
-                     user_agent="my user agent")
+#env
+import os
+from dotenv import load_dotenv
+project_folder = os.path.abspath('.')
+load_dotenv(os.path.join(project_folder, '.env'))
+
+REDDIT_CLIENT_ID = os.getenv("REDDIT_CLIENT_ID")
+REDDIT_CLIENT_SECRET = os.getenv("REDDIT_CLIENT_SECRET")
+REDDIT_USER_AGENT = os.getenv("REDDIT_USER_AGENT")
+
+reddit = praw.Reddit(client_id=REDDIT_CLIENT_ID,
+                     client_secret=REDDIT_CLIENT_SECRET,
+                     user_agent=REDDIT_USER_AGENT)
 
 
 def sub_exists(sub):
@@ -38,7 +48,15 @@ def redditSort(inpurStr):
     subreddit_subs.sort(key=lambda x: int(x[1].replace(',', '')), reverse=True)
     #print(subreddit_subs)
 
-    output = tabulate(subreddit_subs, headers=['SubReddit', 'Subscribers'])
+    multi = ""
+    for a in subreddit_subs:
+        multi += a[0] + '+'
+    #print(multi)
+
+    output = tabulate(subreddit_subs, headers=[
+        'SubReddit', 'Subscribers'
+    ]) + "\n\n----Multi----\n" + multi
+
     return output
 
 
