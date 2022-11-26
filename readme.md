@@ -1,7 +1,7 @@
-#REQ.
-#miniconda 4.9.2
+Required: miniconda 4.9.2
+```
+conda create --name myDangoEnv django
+source activate myDangoEnv
 
-#conda create --name myDangoEnv django
-#source activate myDangoEnv
-
-#pip install -r "requirements.txt"
+pip install -r "requirements.txt"
+```
