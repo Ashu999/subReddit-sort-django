@@ -1,4 +1,4 @@
-# Sort List of subreddits based no. on their subscribers
+# Sort List of subreddits based on no. their subscribers
 
 ##### Use Case: To create Multi-reddits in such a way that if you sort by Top, You won't see posts from just high subsribers subreddit.
 
